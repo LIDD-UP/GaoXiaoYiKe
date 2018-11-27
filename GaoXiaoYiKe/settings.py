@@ -69,8 +69,8 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
     # 'GaoXiaoYiKe.pipelines.GaoxiaoyikePipeline': 300,
     'GaoXiaoYiKe.pipelines.UserPipeline': 300,
-    'GaoXiaoYiKe.pipelines.ImagePipeline': 300,
-    'GaoXiaoYiKe.pipelines.CommentPipeline': 300,
+    'GaoXiaoYiKe.pipelines.ImagePipeline': 301,
+    'GaoXiaoYiKe.pipelines.CommentPipeline': 302,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
