@@ -16,8 +16,9 @@ class GaoxiaoSpider(scrapy.Spider):
             # css写法
             detail_url = image.css('a::attr(href)').extract_first()
             # xpath写法
-            detail_url = image.xpath('//a/@href').extract_first()
+            # detail_url = image.xpath('//a/@href').extract_first()
             # 不需要meta信息了，直接在详情页取数据
+            # image_url= image.css('img::attr(data-src)')
             yield scrapy.Request(url=detail_url,callback=self.parse_content)
         for i in range(50):
             next_url = 'http://www.bx1k.com/funnyimg/find-cate-1-p-{}.html'.format(i)
@@ -26,7 +27,11 @@ class GaoxiaoSpider(scrapy.Spider):
 
     # 爬取详情页的数据
     def parse_content(self,response):
-        url = response.css('#sub-pic-area img::attr(src)').extract_first()
+        print(response.text)
+        # 这里出现问题是由于没有登陆得原因；
+        url = response.css('ul#thumb-ul li img::attr(big_src)').extract()[0]
+        # 他这里的id可能是通过渲染得来得；xpath取不到；
+        # url2 = response.xpath("//ul[@id='thumb-ul']/li")
         user_id = SQLConnectTools.get_user_id()
         create_date = datetime.datetime.now()
         image_item = ImageItem()
