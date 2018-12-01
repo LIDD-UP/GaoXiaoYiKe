@@ -54,8 +54,8 @@ class ImagePipeline(object):
         if isinstance(item,ImageItem):
             self.cursor.execute(
                 '''
-                insert into image(url,user_id,create_date) values(%s,%s,%s)
-                ''', [item['url'], item['user_id'], item['create_date']
+                insert into image(url,user_id,created_date) values(%s,%s,%s)
+                ''', [item['url'], item['user_id'], item['created_date']
                       ]
             )
             self.connect.commit()

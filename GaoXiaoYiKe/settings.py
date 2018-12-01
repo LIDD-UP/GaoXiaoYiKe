@@ -68,7 +68,7 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     # 'GaoXiaoYiKe.pipelines.GaoxiaoyikePipeline': 300,
-    'GaoXiaoYiKe.pipelines.UserPipeline': 300,
+    # 'GaoXiaoYiKe.pipelines.UserPipeline': 300,
     'GaoXiaoYiKe.pipelines.ImagePipeline': 301,
     'GaoXiaoYiKe.pipelines.CommentPipeline': 302,
 }

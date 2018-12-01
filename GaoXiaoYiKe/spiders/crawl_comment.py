@@ -28,7 +28,9 @@ class CrawlCommentSpider(scrapy.Spider):
     # 爬取详情页的数据
     def parse_content(self,response):
         print(response.text)
-        contents = response.css('.com-list .cf .com-info .com-txt').extract()[0]
+        with open('file.html','w',encoding='utf8') as f:
+            f.write(response.text)
+        contents = response.css('.com-list .cf').extract()
         # 他这里的id可能是通过渲染得来得；xpath取不到；
         # url2 = response.xpath("//ul[@id='thumb-ul']/li")
         sql_connect_tools = SQLConnectTools()

@@ -27,17 +27,18 @@ class GaoxiaoSpider(scrapy.Spider):
 
     # 爬取详情页的数据
     def parse_content(self,response):
-        print(response.text)
+        # print(response.text)
         # 这里出现问题是由于没有登陆得原因；
         url = response.css('ul#thumb-ul li img::attr(big_src)').extract()[0]
         # 他这里的id可能是通过渲染得来得；xpath取不到；
         # url2 = response.xpath("//ul[@id='thumb-ul']/li")
-        user_id = SQLConnectTools.get_user_id()
-        create_date = datetime.datetime.now()
+        sql_tools = SQLConnectTools()
+        user_id = sql_tools.get_user_id()
+        created_date = datetime.datetime.now()
         image_item = ImageItem()
         image_item['url'] = url
         image_item['user_id'] = user_id
-        image_item['create_date'] = create_date
+        image_item['created_date'] = created_date
         yield image_item
 
 

@@ -33,6 +33,24 @@ class SQLConnectTools(object):
         self.connect.commit()
         return result
 
+    def get_image_url(self):
+        sql_string = '''
+            select url from image
+        '''
+        x = self.cursor.execute(sql_string)
+        result = self.cursor.fetchall()
+        self.connect.commit()
+        return result
+
+    def get_user_head_url(self):
+        sql_string = '''
+        select head_url from user
+        '''
+        x = self.cursor.execute(sql_string)
+        result = self.cursor.fetchall()
+        self.connect.commit()
+        return result
+
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@ class UserItem(scrapy.Item):
 class ImageItem(scrapy.Item):
     url = scrapy.Field()
     user_id = scrapy.Field()
-    create_date = scrapy.Field()
+    created_date = scrapy.Field()
 
 
 class CommentItem(scrapy.Item):
